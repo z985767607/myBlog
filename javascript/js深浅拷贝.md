@@ -29,41 +29,55 @@ console.log(arr1);  // [2, 3, 6, 8, 4, 3]
 console.log(arr2);  // [1, 3, 6, 8, 4, 3]
 ```
   --看着像是深拷贝，那接下来再加一层
+<br>
 exp:
+<br>
+```
 let arr1 =[[0,1],3,6,8,4,3];
 let arr2 = arr1.slice();
 arr1[0][0] = 2;
 console.log(arr1);  // [[2,1], 3, 6, 8, 4, 3]
 console.log(arr2);  // [[2,1], 3, 6, 8, 4, 3]
+```
 --居然跟着变了。。。只所谓的深拷贝了一层。
+
 **so .. slice()不是深拷贝！！！**
 
 2.concat()
+
 exp:
+```
+
 let arr1 =[1,3,6,8,4,3];
 let arr2 = arr1.concat();
 console.log(arr1 === arr2);  //false
 arr1[0] = 2;
 console.log(arr1); //[2, 3, 6, 8, 4, 3]
 console.log(arr2);  //[1, 3, 6, 8, 4, 3]
+
+```
 --感觉的确是重新开了内存
+
 exp:
+```
 let arr1 =[[0,1],3,6,8,4,3];
 let arr2 = arr1.concat();
 console.log(arr1 === arr2);  //false
 arr1[0][0] = 2;
 console.log(arr1);  // [[2,1], 3, 6, 8, 4, 3]
 console.log(arr2);  // [[2,1], 3, 6, 8, 4, 3]
+```
 **--和slice的表现相同，说明concat也是浅拷贝。**
 
 3.JSON.stringify()+JSON.parse()
+
 JSON.stringify()是将一个js对象序列化为一个字符串，JSON.parse()将一个字符串序列化为一个js对象。   --trick
 而且这种处理方法并不全面，对于数组和函数的处理会有问题。
 
 so...还是写个深拷贝的函数吧。。。
 
 4.deepClone  --判断类型，递归，这个应该是比较
-
+```
 function deepClone(obj){
     if(!obj && typeof obj !== 'object'){
         throw new Error('error arguments');
@@ -81,6 +95,7 @@ function deepClone(obj){
     }
     return obj1;
 }
+```
 
 
 
