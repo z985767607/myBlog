@@ -76,7 +76,7 @@ JSON.stringify()是将一个js对象序列化为一个字符串，JSON.parse()�
 
 so...还是写个深拷贝的函数吧。。。
 
-4.deepClone  --判断类型，递归，这个应该是比较
+4.deepClone  --判断类型，递归
 ```
 function deepClone(obj){
     if(!obj && typeof obj !== 'object'){
